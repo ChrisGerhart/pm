@@ -35,3 +35,33 @@ if __name__ == "__main__":
     with open("tasks.json") as f:
         data = load(f)
     app.run(debug = True)
+
+def passwordRegister():
+  password = input("Enter a password")
+  passwordConfirm = input("Re-Enter your password")
+
+  if password != passwordConfirm:
+    print("Passwords are not the same")
+  else:
+    if len(password) < 5:
+      print("Password is too short")
+      UserRegister()
+    elif not any(char.isalpha() for char in password):
+      print("Password must contain a letter")
+      UserRegister()
+    elif not any(char.isupper() for char in password):
+      print("Password must contain an uppercase")
+      UserRegister()
+    elif not any(char.islower() for char in password):
+      print("Password must contain a lowercase")
+      UserRegister()
+    elif not any(char.isdigit() for char in password):
+      print("Password must contain a number")
+      UserRegister()
+    elif any(char.isalnum() for char in password):
+      print("Password must contain a special character")
+      UserRegister()
+      '''Not working, password is accpeted with or without special characters'''
+    else:
+      print("Your account has been created")
+UserRegister()
